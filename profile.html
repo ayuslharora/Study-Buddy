@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Study Buddy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <span>🚀 Study Buddy</span>
+            </div>
+
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="home.html">
+                        <span class="nav-icon">📅</span> Daily Schedule
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="timer.html">
+                        <span class="nav-icon">⏱️</span> Timer
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="profile.html">
+                        <span class="nav-icon">👤</span> Profile
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div class="top-bar">
+                <h1 class="page-title">My Profile</h1>
+                <div class="user-pill">
+                    <div class="streak-badge">
+                        <span>🔥</span>
+                        <span id="streak-display">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insta-profile-header">
+
+                <div class="avatar-col">
+                    <div class="profile-avatar-xl">ME</div>
+                </div>
+
+                <div class="info-col">
+
+                    <div class="profile-name-row">
+                        <h2 id="profile-name" class="insta-username">Student User</h2>
+                        <button id="edit-profile-btn" class="btn btn-ghost edit-profile-btn">Edit
+                            Profile</button>
+                    </div>
+
+                    <div class="profile-stats-row">
+                        <div class="stat-item">
+                            <span style="font-weight: 700;">0</span> Days Streak
+                        </div>
+                        <div class="stat-item">
+                            <span id="profile-focus-display" style="font-weight: 700;">0h</span> Focused
+                        </div>
+                        <div class="stat-item">
+                            <span id="profile-sessions-display" style="font-weight: 700;">0</span> Sessions
+                        </div>
+                    </div>
+
+                    <div class="profile-bio-wrapper">
+                        <div style="font-weight: 600; margin-bottom: 0.25rem;">Bio</div>
+                        <p id="profile-bio" class="profile-bio-text">
+                            Ready to learn anything.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid var(--border); margin-bottom: 2rem;"></div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem;">
+                <div class="stat-card"
+                    style="border: none; aspect-ratio: 1/1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🏆</div>
+                    <div style="font-weight: 600;">Achievements</div>
+                </div>
+                <div class="stat-card"
+                    style="border: none; aspect-ratio: 1/1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📈</div>
+                    <div style="font-weight: 600;">Analytics</div>
+                </div>
+                <div class="stat-card"
+                    style="border: none; aspect-ratio: 1/1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🗓️</div>
+                    <div style="font-weight: 600;">History</div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

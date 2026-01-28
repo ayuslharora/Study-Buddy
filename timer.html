@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer - Study Buddy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <span>🚀 Study Buddy</span>
+            </div>
+
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="home.html">
+                        <span class="nav-icon">📅</span> Daily Schedule
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="timer.html">
+                        <span class="nav-icon">⏱️</span> Timer
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="profile.html">
+                        <span class="nav-icon">👤</span> Profile
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Time to Focus</h2>
+                <p style="color: var(--text-muted);">"The secret to getting ahead is getting started."</p>
+            </div>
+
+            <div id="timer-ui-group" style="display: flex; flex-direction: column; align-items: center;">
+
+                <div class="timer-mode-pills">
+                    <button class="mode-pill active" data-mode="focus">Focus</button>
+                    <button class="mode-pill" data-mode="short">Short Break</button>
+                    <button class="mode-pill" data-mode="long">Long Break</button>
+                </div>
+
+                <div class="timer-container">
+                    <svg class="timer-svg" viewBox="0 0 300 300">
+                        <circle class="timer-circle-bg" cx="150" cy="150" r="140"></circle>
+                        <circle id="timer-progress" class="timer-circle-progress" cx="150" cy="150" r="140"></circle>
+                    </svg>
+
+                    <div class="timer-text-overlay">
+                        <div id="timer-display" class="timer-big-text">25:00</div>
+                        <div id="timer-status" class="timer-label">Ready to Focus</div>
+                    </div>
+                </div>
+
+                <div class="timer-actions">
+                    <button id="reset-btn" class="btn-circle-sm" title="Reset">↻</button>
+                    <button id="toggle-timer-btn" class="btn-circle-lg" title="Start/Pause">▶</button>
+                    <button id="skip-btn" class="btn-circle-sm" title="Skip">⏭</button>
+                </div>
+
+            </div>
+
+            <div id="stopwatch-ui" class="timer-container" style="display: none;">
+                <svg class="timer-svg" viewBox="0 0 300 300">
+                    <circle class="timer-circle-bg" cx="150" cy="150" r="140"></circle>
+                </svg>
+
+                <div class="timer-text-overlay">
+                    <div id="stopwatch-display" class="timer-big-text">00:00</div>
+                    <div id="stopwatch-status" class="timer-label">Stopwatch</div>
+                </div>
+            </div>
+
+            <div id="stopwatch-controls" class="timer-actions" style="display: none;">
+                <button id="sw-reset-btn" class="btn-circle-sm" title="Reset">↻</button>
+                <button id="sw-toggle-btn" class="btn-circle-lg" title="Start/Pause">▶</button>
+                <button id="sw-lap-btn" class="btn-circle-sm" title="Lap">⏱</button>
+            </div>
+
+            <button id="switch-mode-text-btn" class="btn btn-ghost" style="margin-top: 3rem;">Switch to
+                Stopwatch</button>
+
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
