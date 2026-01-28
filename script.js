@@ -1,18 +1,26 @@
+// Wait for the DOM to fully load before running our script
 document.addEventListener('DOMContentLoaded', () => {
+
+    // --- DOM Elements ---
+    // We select all the elements we need to manipulate
     const greetingText = document.getElementById('greeting-text');
 
+    // Daily Plan Elements
     const planContent = document.getElementById('todays-plan-content');
     const editPlanBtn = document.getElementById('edit-plan-btn');
 
+    // Stats Displays
     const streakDisplay = document.getElementById('streak-display');
     const totalFocusDisplay = document.getElementById('total-focus-display');
     const profileFocusDisplay = document.getElementById('profile-focus-display');
     const profileSessionsDisplay = document.getElementById('profile-sessions-display');
 
+    // Profile Elements
     const profileName = document.getElementById('profile-name');
     const profileBio = document.getElementById('profile-bio');
     const editProfileBtn = document.getElementById('edit-profile-btn');
 
+    // Timer Elements
     const timerDisplay = document.getElementById('timer-display');
     const timerStatus = document.getElementById('timer-status');
     const timerProgress = document.getElementById('timer-progress');
@@ -20,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetBtn = document.getElementById('reset-btn');
     const modePills = document.querySelectorAll('.mode-pill');
 
+    // Stopwatch Elements
     const switchBtn = document.getElementById('switch-mode-text-btn');
     const timerGroup = document.getElementById('timer-ui-group');
     const stopwatchUI = document.getElementById('stopwatch-ui');
@@ -40,6 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     setGreeting();
 
+    // --- Local Storage Loading ---
+    // We use parseInt because LocalStorage saves everything as a string
     let totalFocusSeconds = parseInt(localStorage.getItem('FocusSeconds')) || 0;
 
     function updateFocusDisplay() {
@@ -93,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 planContent.setAttribute('contenteditable', 'true');
-                editPlanBtn.textContent = '💾';
+                editPlanBtn.innerHTML = '<svg class="icon-svg" style="width: 16px; height: 16px;" viewBox="0 0 407.096 407.096" xmlns="http://www.w3.org/2000/svg"><g><path d="M402.115,84.008L323.088,4.981C319.899,1.792,315.574,0,311.063,0H17.005C7.613,0,0,7.614,0,17.005v373.086c0,9.392,7.613,17.005,17.005,17.005h373.086c9.392,0,17.005-7.613,17.005-17.005V96.032C407.096,91.523,405.305,87.197,402.115,84.008z M300.664,163.567H67.129V38.862h233.535V163.567z"/><path d="M214.051,148.16h43.08c3.131,0,5.668-2.538,5.668-5.669V59.584c0-3.13-2.537-5.668-5.668-5.668h-43.08c-3.131,0-5.668,2.538-5.668,5.668v82.907C208.383,145.622,210.92,148.16,214.051,148.16z"/></g></svg>';
             }
         });
     }
@@ -139,16 +150,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 profileBio.setAttribute('contenteditable', 'false');
 
                 editProfileBtn.textContent = 'Edit Profile';
-                editProfileBtn.classList.remove('btn-ghost');
-                editProfileBtn.classList.add('btn-primary');
+                editProfileBtn.classList.remove('btn-primary');
+                editProfileBtn.classList.add('btn-ghost');
 
+                // Clear inline styles applied during edit mode
+                editProfileBtn.style.border = '';
+                editProfileBtn.style.color = '';
+
+                // Reset text area styles
                 profileName.style.borderColor = 'transparent';
                 profileName.style.background = 'transparent';
                 profileBio.style.borderColor = 'transparent';
                 profileBio.style.background = 'transparent';
 
+                // Save to LocalStorage
                 localStorage.setItem('ProfileName', profileName.textContent);
                 localStorage.setItem('ProfileBio', profileBio.textContent);
+
+                // Explicitly blur fields to remove any focus ring
+                profileName.blur();
+                profileBio.blur();
 
             } else {
                 profileName.setAttribute('contenteditable', 'true');
@@ -172,27 +193,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (timerDisplay && timerProgress) {
 
+        // Initialize Timer Variables
         let countdown;
         let isRunning = false;
-        let timeLeft = 25 * 60;
+        let timeLeft = 25 * 60; // Default to 25 minutes
         let totalTime = 25 * 60;
         let currentMode = 'focus';
 
+        // Calculate the SVG circle circumference for the progress bar
+        // Radius is approx 140px in our CSS
         const circumference = 2 * Math.PI * 140;
 
         timerProgress.style.strokeDasharray = `${circumference} ${circumference}`;
         timerProgress.style.strokeDashoffset = 0;
 
+        // Function to update the circle stroke
         function setProgress(percent) {
             const offset = circumference - (percent / 100) * circumference;
             timerProgress.style.strokeDashoffset = offset;
         }
 
         function updateDisplay() {
+            // Convert seconds to MM:SS format
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
             timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
+            // Update the circular progress bar
             const percent = (timeLeft / totalTime) * 100;
             setProgress(percent);
         }
