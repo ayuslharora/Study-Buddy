@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Stats Displays
     const streakDisplay = document.getElementById('streak-display');
+    const profileStreakDisplay = document.getElementById('profile-header-streak');
     const totalFocusDisplay = document.getElementById('total-focus-display');
     const profileFocusDisplay = document.getElementById('profile-focus-display');
     const profileSessionsDisplay = document.getElementById('profile-sessions-display');
@@ -133,6 +134,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         streakDisplay.textContent = streak;
+    }
+
+    // Also update the profile streak if it exists
+    // Also update the profile streak if it exists
+    if (profileStreakDisplay) {
+        const streak = parseInt(localStorage.getItem('Streak')) || 0;
+        profileStreakDisplay.textContent = streak;
     }
 
     if (editProfileBtn && profileName && profileBio) {
