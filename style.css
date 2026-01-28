@@ -113,9 +113,42 @@ body {
     color: var(--primary);
 }
 
+
 .nav-icon {
-    font-size: 1.2rem;
+    display: flex;
+    /* Ensure SVG aligns nicely */
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
 }
+
+.icon-svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+    stroke: currentColor;
+    transition: all 0.2s;
+}
+
+
+/* On hover/active, the icon should probably also take the primary color? */
+.nav-item a:hover .icon-svg,
+.nav-item.active a .icon-svg {
+    /* Inherits from parent color (primary) due to currentColor */
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+.icon-svg-orange {
+    width: 100%;
+    height: 100%;
+    fill: #ffaa00;
+    /* Fire Orange/Yellow */
+    transition: fill 0.2s;
+}
+
+
 
 /* Subject List in Sidebar */
 
